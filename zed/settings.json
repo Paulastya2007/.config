@@ -1,0 +1,111 @@
+{
+	"theme": "Catppuccin Mocha",
+	"features": { "edit_prediction_provider": "copilot" },
+	"buffer_font_size": 20,
+	"buffer_font_family": ".ZedMono",
+	"ui_font_family": ".ZedSans",
+	"ui_font_size": 20,
+	"icon_theme": "JetBrains New UI Icons (Dark)",
+	"base_keymap": "VSCode",
+	"toolbar": { "breadcrumbs": false, "quick_actions": false },
+	"project_panel": { "entry_spacing": "comfortable" },
+	"tabs": { "file_icons": true },
+	"current_line_highlight": "none",
+	"hard_tabs": true,
+	"cursor_blink": false,
+	"hide_mouse": "never",
+
+	"inlay_hints": {
+		"show_other_hints": false,
+		"show_parameter_hints": false,
+		"show_type_hints": false,
+		"show_value_hints": true
+	},
+
+	"experimental.theme_overrides": {
+		"background.appearance": "transparent",
+		"syntax": {
+			"keyword": { "color": "#9D70FF" },
+			"function": { "color": "#BCBEC4" }
+		}
+	},
+
+	"restore_on_startup": "last_session",
+
+	//language support
+	"languages": {
+		"Python": {
+			"language_servers": ["!ty", "pyright", "!basedpyright"],
+			"formatter": {
+				"external": {
+					"command": "black",
+					"arguments": ["-", "--skip-string-normalization"]
+				}
+			},
+			"format_on_save": "on"
+		},
+		"Rust": {
+			"language_servers": ["rust-analyzer"],
+			"formatter": {
+				"external": {
+					"command": "rustfmt",
+					"arguments": []
+				}
+			}
+		}
+	},
+	"lsp": {
+		"vscode-html-language-server": {
+			"settings": {
+				"html": {
+					"format": {
+						// Indent under <html> and <head> (default: false)
+						"indentInnerHtml": true,
+						// Disable formatting inside <svg> or <script>
+						"contentUnformatted": "svg,script",
+						// Add an extra newline before <div> and <p>
+						"extraLiners": "div,p"
+					}
+				}
+			}
+		},
+		"rust-analyzer": {
+			"initialization_options": {
+				"check": {
+					"command": "clippy" // rust-analyzer.check.command (default: "check")
+				},
+				"imports": {
+					"merge": { "glob": false },
+					"granularity": {
+						"enforce": true,
+						"group": "module"
+					}
+				},
+				"inlayHints": {
+					"maxLength": null,
+					"lifetimeElisionHints": {
+						"enable": "skip_trivial",
+						"useParameterNames": true
+					},
+					"closureReturnTypeHints": {
+						"enable": "always"
+					}
+				}
+			}
+		}
+	},
+	"language_models": {
+		"lmstudio": {
+			"api_url": "http://192.168.56.1:1234",
+			"available_models": [
+				{
+					"name": "qwen2.5b-coder-1.5b-instruct",
+					"max_tokens": 32768,
+					"supports_tool_calls": true,
+					"supports_images": false
+				}
+			]
+			//some url to expose
+		}
+	}
+}
